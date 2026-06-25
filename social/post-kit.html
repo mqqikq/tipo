@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Instagram post kit — STUDIO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter+Tight:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{ --b:#0a0a0a; --d:#666; --line:#e6e6e4; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  body{ background:#f3f3f1; color:var(--b); font-family:"Inter",system-ui,sans-serif; padding:40px 24px 80px; }
+  .page{ max-width:980px; margin:0 auto; }
+  h1{ font-family:"Inter Tight",sans-serif; font-weight:600; font-size:30px; letter-spacing:-.02em; }
+  .sub{ color:var(--d); margin:8px 0 28px; max-width:60ch; }
+  h2{ font-family:"Inter Tight",sans-serif; font-weight:500; font-size:19px; margin:34px 0 14px; }
+  .bar{ display:flex; gap:10px; margin-bottom:22px; flex-wrap:wrap; }
+  button{ font-family:"Inter",sans-serif; font-size:14px; font-weight:500; background:var(--b); color:#fff; border:1px solid var(--b); padding:11px 20px; border-radius:0; cursor:pointer; transition:.15s; }
+  button:hover{ background:#fff; color:var(--b); }
+  button.ghost{ background:#fff; color:var(--b); }
+  button.ghost:hover{ background:var(--b); color:#fff; }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:22px; }
+  .item{ }
+  .stage{ width:100%; aspect-ratio:1; overflow:hidden; border:1px solid var(--line); position:relative; }
+  .scaler{ position:absolute; top:0; left:0; width:1080px; height:1080px; transform-origin:top left; }
+  .item .row{ display:flex; align-items:center; justify-content:space-between; margin-top:10px; }
+  .item .nm{ font-size:13px; color:var(--d); }
+  .item button{ padding:7px 14px; font-size:12px; }
+  .copy-box{ background:#fff; border:1px solid var(--line); padding:18px 20px; border-radius:0; }
+  .copy-box pre{ font-family:"Inter",sans-serif; font-size:14px; line-height:1.6; white-space:pre-wrap; }
+  .copy-box .lbl{ font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--d); margin-bottom:8px; }
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media(max-width:640px){ .two{ grid-template-columns:1fr; } }
+
+  /* ===== 1080x1080 TILES ===== */
+  .tile{ width:1080px; height:1080px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:90px; }
+  .tile .kicker{ font-family:"Inter",sans-serif; font-size:30px; letter-spacing:.32em; text-transform:uppercase; }
+  .tile .rule{ width:90px; height:3px; margin:46px 0; }
+
+  /* 1 RAVEN */
+  .t-raven{ background:#15130f; }
+  .t-raven .word{ font-family:"Oswald",sans-serif; font-weight:700; font-size:170px; letter-spacing:6px; color:#d8a24a; line-height:1; }
+  .t-raven .rule{ background:#d8a24a; }
+  .t-raven .kicker{ color:#9b9388; }
+
+  /* 2 FLEUR */
+  .t-fleur{ background:#f1e9db; }
+  .t-fleur .word{ font-family:"Cormorant Garamond",serif; font-style:italic; font-weight:500; font-size:200px; color:#b5705a; line-height:1; }
+  .t-fleur .rule{ background:#c98b86; }
+  .t-fleur .kicker{ color:#8d8175; }
+
+  /* 3 DROPS */
+  .t-drops{ background:#0e0e10; }
+  .t-drops .word{ font-family:"Inter Tight",sans-serif; font-weight:600; font-size:150px; letter-spacing:-.03em; color:#fff; line-height:.98; }
+  .t-drops .rule{ background:#fff; }
+  .t-drops .kicker{ color:#8a8a92; }
+
+  /* 4 STATEMENT (light) */
+  .t-state{ background:#ffffff; }
+  .t-state .big{ font-family:"Inter Tight",sans-serif; font-weight:600; font-size:96px; letter-spacing:-.03em; color:#0a0a0a; line-height:1.05; }
+  .t-state .small{ font-family:"Inter",sans-serif; font-size:30px; color:#666; margin-top:40px; }
+
+  /* 5 WHAT I DO (dark) */
+  .t-do{ background:#1c1916; }
+  .t-do .lab{ font-family:"Inter",sans-serif; font-size:28px; letter-spacing:.3em; text-transform:uppercase; color:#d8a24a; margin-bottom:44px; }
+  .t-do .big{ font-family:"Inter Tight",sans-serif; font-weight:500; font-size:80px; letter-spacing:-.02em; color:#efe9df; line-height:1.12; }
+
+  /* 6 CTA (light) */
+  .t-cta{ background:#efe7d8; }
+  .t-cta .big{ font-family:"Inter Tight",sans-serif; font-weight:600; font-size:120px; letter-spacing:-.03em; color:#1c1916; line-height:1; }
+  .t-cta .small{ font-family:"Inter",sans-serif; font-size:32px; color:#8a6f54; margin-top:42px; }
+
+  /* AVATAR */
+  .t-ava{ background:#0e0e10; }
+  .t-ava .s{ font-family:"Inter Tight",sans-serif; font-weight:600; font-size:300px; color:#fff; line-height:.8; letter-spacing:-.05em; }
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Instagram post kit</h1>
+  <p class="sub">6 постов-обложек + аватар, всё 1080×1080. Жми «Скачать PNG» под каждым (или «Скачать всё»), затем заливай в профиль. Порядок постинга — слева направо, как в сетке ниже.</p>
+
+  <div class="bar">
+    <button id="all">↓ Скачать все 7 PNG</button>
+    <span id="status" style="align-self:center; color:var(--d); font-size:13px;"></span>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <div class="item">
+      <div class="stage"><div class="scaler"><div class="tile t-raven" id="t1">
+        <div class="word">RAVEN</div><div class="rule"></div><div class="kicker">Barbershop · website</div>
+      </div></div></div>
+      <div class="row"><span class="nm">01 — RAVEN</span><button onclick="dl('t1','01-raven')">Скачать PNG</button></div>
+    </div>
+
+    <div class="item">
+      <div class="stage"><div class="scaler"><div class="tile t-fleur" id="t2">
+        <div class="word">Fleur</div><div class="rule"></div><div class="kicker">Beauty salon · website</div>
+      </div></div></div>
+      <div class="row"><span class="nm">02 — FLEUR</span><button onclick="dl('t2','02-fleur')">Скачать PNG</button></div>
+    </div>
+
+    <div class="item">
+      <div class="stage"><div class="scaler"><div class="tile t-drops" id="t3">
+        <div class="word">drope</div><div class="rule"></div><div class="kicker">Marketplace · UI/UX</div>
+      </div></div></div>
+      <div class="row"><span class="nm">03 — Platform</span><button onclick="dl('t3','03-platform')">Скачать PNG</button></div>
+    </div>
+
+    <div class="item">
+      <div class="stage"><div class="scaler"><div class="tile t-state" id="t4">
+        <div class="big">Websites<br>that book<br>clients.</div><div class="small">— online booking built in</div>
+      </div></div></div>
+      <div class="row"><span class="nm">04 — Statement</span><button onclick="dl('t4','04-statement')">Скачать PNG</button></div>
+    </div>
+
+    <div class="item">
+      <div class="stage"><div class="scaler"><div class="tile t-do" id="t5">
+        <div class="lab">What I do</div><div class="big">From an Instagram<br>page to a site that<br>takes bookings.</div>
+      </div></div></div>
+      <div class="row"><span class="nm">05 — What I do</span><button onclick="dl('t5','05-whatido')">Скачать PNG</button></div>
+    </div>
+
+    <div class="item">
+      <div class="stage"><div class="scaler"><div class="tile t-cta" id="t6">
+        <div class="big">3–7<br>days</div><div class="small">DM &laquo;site&raquo; to start</div>
+      </div></div></div>
+      <div class="row"><span class="nm">06 — CTA</span><button onclick="dl('t6','06-cta')">Скачать PNG</button></div>
+    </div>
+
+    <div class="item">
+      <div class="stage"><div class="scaler"><div class="tile t-ava" id="ava">
+        <div class="s">tipo</div>
+      </div></div></div>
+      <div class="row"><span class="nm">Avatar</span><button onclick="dl('ava','avatar')">Скачать PNG</button></div>
+    </div>
+
+  </div>
+
+  <h2>Текст для шапки профиля</h2>
+  <div class="two">
+    <div class="copy-box">
+      <div class="lbl">EN</div>
+      <pre>Username:  tipo.sites
+Name:      tipo — web for local business
+
+Bio:
+Custom websites + online booking
+Barbershops · salons · small brands
+Live in a few days ↓
+🔗 your-portfolio-link</pre>
+    </div>
+    <div class="copy-box">
+      <div class="lbl">RU</div>
+      <pre>Ник:   tipo.sites
+Имя:   tipo — сайты для локального бизнеса
+
+Описание:
+Сайты с онлайн-записью под ключ
+Барбершопы · салоны · небольшие бренды
+Запуск за пару дней ↓
+🔗 ссылка-на-портфолио</pre>
+    </div>
+  </div>
+
+  <h2>Ник</h2>
+  <div class="copy-box"><pre>tipo.sites  ✓  выбран
+instagram.com/tipo.sites</pre></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+  function fit(){
+    document.querySelectorAll('.stage').forEach(st=>{
+      const s = st.clientWidth/1080;
+      st.querySelector('.scaler').style.transform='scale('+s+')';
+    });
+  }
+  window.addEventListener('resize', fit);
+
+  async function render(id){
+    const node=document.getElementById(id);
+    return html2canvas(node,{width:1080,height:1080,scale:2,backgroundColor:null,useCORS:true});
+  }
+  function save(canvas,name){
+    const a=document.createElement('a');
+    a.href=canvas.toDataURL('image/png');
+    a.download=name+'.png';
+    a.click();
+  }
+  async function dl(id,name){
+    const s=document.getElementById('status'); s.textContent='Рендерю '+name+'…';
+    const c=await render(id); save(c,name); s.textContent='Готово: '+name+'.png';
+  }
+  document.getElementById('all').addEventListener('click', async ()=>{
+    const list=[['t1','01-raven'],['t2','02-fleur'],['t3','03-platform'],['t4','04-statement'],['t5','05-whatido'],['t6','06-cta'],['ava','avatar']];
+    const s=document.getElementById('status');
+    for(const [id,name] of list){ s.textContent='Рендерю '+name+'…'; const c=await render(id); save(c,name); await new Promise(r=>setTimeout(r,350)); }
+    s.textContent='Готово — скачано 7 файлов.';
+  });
+
+  (async()=>{ try{ await document.fonts.ready; }catch(e){} fit(); })();
+</script>
+</body>
+</html>

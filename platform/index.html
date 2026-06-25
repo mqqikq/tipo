@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>drope — case study · tipo</title>
+<meta name="description" content="drope — a marketplace for drops by independent designers. Product design & build by tipo." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#ffffff; --bg-2:#f5f5f4; --ink:#0a0a0a; --dim:#6b6b6b; --faint:#a3a3a3; --line:#e6e6e4;
+    --display:"Inter Tight",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  ::selection{background:var(--ink);color:var(--bg);}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 34px;}
+  h1,h2{font-family:var(--display);font-weight:600;line-height:1.02;letter-spacing:-.03em;}
+  .label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);}
+
+  header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 34px;background:rgba(255,255,255,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  .brand{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.02em;}
+  .back{font-size:14px;display:inline-flex;align-items:center;gap:7px;padding-bottom:2px;border-bottom:1px solid var(--ink);}
+  .back:hover{gap:12px;}
+
+  .hero{padding:150px 0 50px;}
+  .hero .label{margin-bottom:22px;}
+  .hero h1{font-size:clamp(48px,9vw,104px);letter-spacing:-.045em;}
+  .hero .tag{margin-top:18px;font-size:20px;color:var(--dim);max-width:50ch;}
+  .meta{margin-top:46px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:22px 0;}
+  .meta .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
+  .meta .v{font-family:var(--display);font-weight:500;font-size:17px;margin-top:6px;}
+  @media(max-width:680px){.meta{grid-template-columns:1fr 1fr;gap:22px;}}
+
+  .shot{margin:14px 0;}
+  .shot img{width:100%;display:block;}
+  .hero-shot{background:#0e0e10;border-radius:2px;overflow:hidden;margin-top:40px;}
+
+  .intro-section{padding:74px 0 40px;}
+  .intro-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;}
+  .intro-grid h2{font-size:clamp(24px,3vw,34px);font-weight:500;}
+  .intro-grid p{color:var(--dim);margin-bottom:16px;}
+  .intro-grid .note{font-size:13px;color:var(--faint);border-left:2px solid var(--line);padding-left:14px;margin-top:24px;}
+  @media(max-width:680px){.intro-grid{grid-template-columns:1fr;gap:20px;}}
+
+  .screens{padding:30px 0 90px;}
+  .screens .st-top{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--ink);padding-bottom:18px;margin-bottom:40px;}
+  .screens h2{font-size:clamp(24px,3vw,36px);font-weight:500;}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .scard{}
+  .scard .frame{background:var(--bg-2);border:1px solid var(--line);border-radius:2px;overflow:hidden;aspect-ratio:9/19;}
+  .scard .frame img{width:100%;height:100%;object-fit:cover;object-position:top;}
+  .scard .cap{margin-top:12px;font-size:13px;color:var(--dim);}
+  .scard .cap b{font-weight:500;color:var(--ink);display:block;}
+  @media(max-width:820px){.grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.grid{grid-template-columns:1fr;} .scard .frame{aspect-ratio:9/16;}}
+
+  .cta{background:var(--bg-2);padding:70px 0;text-align:center;}
+  .cta h2{font-size:clamp(26px,4vw,44px);}
+  .cta p{color:var(--dim);margin:14px auto 28px;max-width:46ch;}
+  .btn{font-size:14px;font-weight:500;background:var(--ink);color:var(--bg);padding:14px 28px;border:1px solid var(--ink);display:inline-block;transition:.2s;}
+  .btn:hover{background:var(--bg);color:var(--ink);}
+
+  footer{padding:30px 0 40px;border-top:1px solid var(--line);}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:var(--dim);}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="../index.html" class="brand">tipo</a>
+  <a href="../index.html#work" class="back">← Back to work</a>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="label">Case study · Flagship</div>
+    <h1>drope</h1>
+    <div class="tag">A marketplace for limited drops by independent designers — storefront, drop pages, brand profiles and checkout.</div>
+    <div class="meta">
+      <div><div class="k">Role</div><div class="v">Design &amp; build</div></div>
+      <div><div class="k">Type</div><div class="v">Marketplace app</div></div>
+      <div><div class="k">Year</div><div class="v">2025–26</div></div>
+      <div><div class="k">Status</div><div class="v">Live · private</div></div>
+    </div>
+    <div class="hero-shot shot"><img src="assets/hero.png" alt="drope — three app screens" /></div>
+  </div>
+</section>
+
+<section class="intro-section">
+  <div class="wrap">
+    <div class="intro-grid">
+      <div><h2>The idea</h2></div>
+      <div>
+        <p>drope is where independent designers release limited drops — timed, numbered, then archived. The product had to feel like a gallery and a sneaker app at once: calm, editorial, but built for the rush of a launch.</p>
+        <p>I designed and built the full experience — the home feed, individual drop pages with live countdowns, item pages, brand profiles and the checkout flow — as a cohesive dark interface that puts the product photography first.</p>
+        <p class="note">This is a real product. The screens below are a demo presentation — source code is private and not shared.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="screens">
+  <div class="wrap">
+    <div class="st-top">
+      <h2>Screens</h2>
+      <span class="label">5 key flows</span>
+    </div>
+    <div class="grid">
+      <div class="scard"><div class="frame"><img src="assets/s1.png" alt="Home feed"></div><div class="cap"><b>Home feed</b>Live and upcoming drops</div></div>
+      <div class="scard"><div class="frame"><img src="assets/s2.png" alt="Drop page"></div><div class="cap"><b>Drop page</b>Countdown, items, pricing</div></div>
+      <div class="scard"><div class="frame"><img src="assets/s3.png" alt="Item page"></div><div class="cap"><b>Item page</b>Detail, sizes, add to cart</div></div>
+      <div class="scard"><div class="frame"><img src="assets/s4.png" alt="Brand profile"></div><div class="cap"><b>Brand profile</b>Designer page &amp; archive</div></div>
+      <div class="scard"><div class="frame"><img src="assets/s5.png" alt="Upcoming drop"></div><div class="cap"><b>Upcoming</b>Reminders before launch</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Want something built to this level?</h2>
+    <p>This is the bar I hold for every project — from a one-page site to a full product.</p>
+    <a href="../index.html#contact" class="btn">Start a project</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 tipo</span>
+    <a href="../index.html">tipo.sites →</a>
+  </div>
+</footer>
+
+</body>
+</html>
