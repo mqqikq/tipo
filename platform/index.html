@@ -24,8 +24,13 @@
 
   header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:18px 34px;background:rgba(255,255,255,.82);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
   .brand{font-family:var(--display);font-weight:600;font-size:17px;letter-spacing:-.02em;}
+  .hright{display:flex;align-items:center;gap:22px;}
   .back{font-size:14px;display:inline-flex;align-items:center;gap:7px;padding-bottom:2px;border-bottom:1px solid var(--ink);}
   .back:hover{gap:12px;}
+  .lang{display:flex;border:1px solid var(--line);}
+  .lang button{padding:5px 9px;background:transparent;border:0;color:var(--dim);cursor:pointer;font-family:var(--body);font-size:12px;letter-spacing:.04em;}
+  .lang button.on{background:var(--ink);color:var(--bg);}
+  @media(max-width:560px){ .back{display:none;} }
 
   .hero{padding:150px 0 50px;}
   .hero .label{margin-bottom:22px;}
@@ -51,7 +56,6 @@
   .screens .st-top{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--ink);padding-bottom:18px;margin-bottom:40px;}
   .screens h2{font-size:clamp(24px,3vw,36px);font-weight:500;}
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-  .scard{}
   .scard .frame{background:var(--bg-2);border:1px solid var(--line);border-radius:2px;overflow:hidden;aspect-ratio:9/19;}
   .scard .frame img{width:100%;height:100%;object-fit:cover;object-position:top;}
   .scard .cap{margin-top:12px;font-size:13px;color:var(--dim);}
@@ -73,19 +77,25 @@
 
 <header>
   <a href="../index.html" class="brand">tipo</a>
-  <a href="../index.html#work" class="back">← Back to work</a>
+  <div class="hright">
+    <a href="../index.html#work" class="back" data-en="← Back to work" data-uk="← До робіт">← Back to work</a>
+    <div class="lang">
+      <button data-lang="en" class="on">EN</button>
+      <button data-lang="uk">UA</button>
+    </div>
+  </div>
 </header>
 
 <section class="hero">
   <div class="wrap">
-    <div class="label">Case study · Flagship</div>
+    <div class="label" data-en="Case study · Flagship" data-uk="Кейс · Флагман">Case study · Flagship</div>
     <h1>drope</h1>
-    <div class="tag">A marketplace for limited drops by independent designers — storefront, drop pages, brand profiles and checkout.</div>
+    <div class="tag" data-en="A marketplace for limited drops by independent designers — storefront, drop pages, brand profiles and checkout." data-uk="Маркетплейс лімітованих дропів від незалежних дизайнерів — вітрина, сторінки дропів, профілі брендів і оформлення замовлення.">A marketplace for limited drops by independent designers — storefront, drop pages, brand profiles and checkout.</div>
     <div class="meta">
-      <div><div class="k">Role</div><div class="v">Design &amp; build</div></div>
-      <div><div class="k">Type</div><div class="v">Marketplace app</div></div>
-      <div><div class="k">Year</div><div class="v">2025–26</div></div>
-      <div><div class="k">Status</div><div class="v">Live · private</div></div>
+      <div><div class="k" data-en="Role" data-uk="Роль">Role</div><div class="v" data-en="Design &amp; build" data-uk="Дизайн і розробка">Design &amp; build</div></div>
+      <div><div class="k" data-en="Type" data-uk="Тип">Type</div><div class="v" data-en="Marketplace app" data-uk="Маркетплейс">Marketplace app</div></div>
+      <div><div class="k" data-en="Year" data-uk="Рік">Year</div><div class="v">2025–26</div></div>
+      <div><div class="k" data-en="Status" data-uk="Статус">Status</div><div class="v" data-en="Built · pre-launch" data-uk="Готово · до запуску">Built · pre-launch</div></div>
     </div>
     <div class="hero-shot shot"><img src="assets/hero.png" alt="drope — three app screens" /></div>
   </div>
@@ -94,11 +104,11 @@
 <section class="intro-section">
   <div class="wrap">
     <div class="intro-grid">
-      <div><h2>The idea</h2></div>
+      <div><h2 data-en="The idea" data-uk="Ідея">The idea</h2></div>
       <div>
-        <p>drope is where independent designers release limited drops — timed, numbered, then archived. The product had to feel like a gallery and a sneaker app at once: calm, editorial, but built for the rush of a launch.</p>
-        <p>I designed and built the full experience — the home feed, individual drop pages with live countdowns, item pages, brand profiles and the checkout flow — as a cohesive dark interface that puts the product photography first.</p>
-        <p class="note">This is a real product. The screens below are a demo presentation — source code is private and not shared.</p>
+        <p data-en="drope is where independent designers release limited drops — timed, numbered, then archived. The product had to feel like a gallery and a sneaker app at once: calm, editorial, but built for the rush of a launch." data-uk="drope — це місце, де незалежні дизайнери випускають лімітовані дропи: за таймером, нумеровані, потім в архів. Продукт мав відчуватися водночас як галерея і як sneaker-застосунок: спокійно, редакторськи, але зібрано під ажіотаж запуску.">drope is where independent designers release limited drops — timed, numbered, then archived. The product had to feel like a gallery and a sneaker app at once: calm, editorial, but built for the rush of a launch.</p>
+        <p data-en="I designed and built the full experience — the home feed, individual drop pages with live countdowns, item pages, brand profiles and the checkout flow — as a cohesive dark interface that puts the product photography first." data-uk="Я спроєктував і зібрав увесь досвід — стрічку, окремі сторінки дропів із таймерами, сторінки товарів, профілі брендів і оформлення замовлення — як цілісний темний інтерфейс, де на першому місці предметна зйомка.">I designed and built the full experience — the home feed, individual drop pages with live countdowns, item pages, brand profiles and the checkout flow — as a cohesive dark interface that puts the product photography first.</p>
+        <p class="note" data-en="A finished product — design and build are complete. It hasn't launched publicly yet; a launch is planned. Source code is private; the screens below are a demo presentation." data-uk="Готовий продукт — дизайн і розробка завершені. Публічно ще не запущений; запуск заплановано. Вихідний код приватний; екрани нижче — демонстрація.">A finished product — design and build are complete. It hasn't launched publicly yet; a launch is planned. Source code is private; the screens below are a demo presentation.</p>
       </div>
     </div>
   </div>
@@ -107,24 +117,24 @@
 <section class="screens">
   <div class="wrap">
     <div class="st-top">
-      <h2>Screens</h2>
-      <span class="label">5 key flows</span>
+      <h2 data-en="Screens" data-uk="Екрани">Screens</h2>
+      <span class="label" data-en="5 key flows" data-uk="5 ключових екранів">5 key flows</span>
     </div>
     <div class="grid">
-      <div class="scard"><div class="frame"><img src="assets/s1.png" alt="Home feed"></div><div class="cap"><b>Home feed</b>Live and upcoming drops</div></div>
-      <div class="scard"><div class="frame"><img src="assets/s2.png" alt="Drop page"></div><div class="cap"><b>Drop page</b>Countdown, items, pricing</div></div>
-      <div class="scard"><div class="frame"><img src="assets/s3.png" alt="Item page"></div><div class="cap"><b>Item page</b>Detail, sizes, add to cart</div></div>
-      <div class="scard"><div class="frame"><img src="assets/s4.png" alt="Brand profile"></div><div class="cap"><b>Brand profile</b>Designer page &amp; archive</div></div>
-      <div class="scard"><div class="frame"><img src="assets/s5.png" alt="Upcoming drop"></div><div class="cap"><b>Upcoming</b>Reminders before launch</div></div>
+      <div class="scard"><div class="frame"><img src="assets/s1.png" alt="Home feed"></div><div class="cap"><b data-en="Home feed" data-uk="Стрічка">Home feed</b><span data-en="Live and upcoming drops" data-uk="Активні та майбутні дропи">Live and upcoming drops</span></div></div>
+      <div class="scard"><div class="frame"><img src="assets/s2.png" alt="Drop page"></div><div class="cap"><b data-en="Drop page" data-uk="Сторінка дропу">Drop page</b><span data-en="Countdown, items, pricing" data-uk="Таймер, товари, ціни">Countdown, items, pricing</span></div></div>
+      <div class="scard"><div class="frame"><img src="assets/s3.png" alt="Item page"></div><div class="cap"><b data-en="Item page" data-uk="Сторінка товару">Item page</b><span data-en="Detail, sizes, add to cart" data-uk="Деталі, розміри, у кошик">Detail, sizes, add to cart</span></div></div>
+      <div class="scard"><div class="frame"><img src="assets/s4.png" alt="Brand profile"></div><div class="cap"><b data-en="Brand profile" data-uk="Профіль бренду">Brand profile</b><span data-en="Designer page &amp; archive" data-uk="Сторінка дизайнера й архів">Designer page &amp; archive</span></div></div>
+      <div class="scard"><div class="frame"><img src="assets/s5.png" alt="Upcoming drop"></div><div class="cap"><b data-en="Upcoming" data-uk="Анонс">Upcoming</b><span data-en="Reminders before launch" data-uk="Нагадування перед запуском">Reminders before launch</span></div></div>
     </div>
   </div>
 </section>
 
 <section class="cta">
   <div class="wrap">
-    <h2>Want something built to this level?</h2>
-    <p>This is the bar I hold for every project — from a one-page site to a full product.</p>
-    <a href="../index.html#contact" class="btn">Start a project</a>
+    <h2 data-en="Want something built to this level?" data-uk="Хочеш проєкт такого ж рівня?">Want something built to this level?</h2>
+    <p data-en="This is the bar I hold for every project — from a one-page site to a full product." data-uk="Це планка, яку я тримаю в кожному проєкті — від односторінкового сайту до повноцінного продукту.">This is the bar I hold for every project — from a one-page site to a full product.</p>
+    <a href="../index.html#contact" class="btn" data-en="Start a project" data-uk="Почати проєкт">Start a project</a>
   </div>
 </section>
 
@@ -135,5 +145,17 @@
   </div>
 </footer>
 
+<script>
+  function setLang(lang){
+    document.documentElement.lang = lang === 'uk' ? 'uk' : 'en';
+    document.querySelectorAll('[data-en]').forEach(el=>{ const t=el.getAttribute('data-'+lang); if(t!=null) el.innerHTML=t; });
+    document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+    try{ localStorage.setItem('tipo-lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+  let saved='en';
+  try{ const s=localStorage.getItem('tipo-lang'); if(s) saved=s; }catch(e){}
+  setLang(saved==='uk'?'uk':'en');
+</script>
 </body>
 </html>
