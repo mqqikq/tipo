@@ -305,7 +305,6 @@
   try {
     const stored = localStorage.getItem('lang');
     if (stored) saved = stored;
-    else if ((navigator.language || '').toLowerCase().startsWith('ru')) saved = 'ru';
   } catch (e) {}
   setLang(saved === 'ru' ? 'ru' : 'en');
 </script>
