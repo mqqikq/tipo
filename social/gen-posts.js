@@ -13,7 +13,7 @@ fs.mkdirSync(OUT, { recursive: true });
 fs.mkdirSync(TMP, { recursive: true });
 
 const FONTS = 'https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Inter+Tight:wght@500;600&family=Inter:wght@400;500&display=swap';
-const box = 'width:1080px;height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;';
+const box = 'box-sizing:border-box;width:1080px;height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;';
 
 const tiles = [
   { name: '01-raven', html:
@@ -58,7 +58,7 @@ const tiles = [
 const page = (inner) => `<!doctype html><html><head><meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="${FONTS}" rel="stylesheet">
-<style>html,body{margin:0;padding:0;background:#fff;}</style></head><body>${inner}</body></html>`;
+<style>*{box-sizing:border-box;}html,body{margin:0;padding:0;background:#fff;}</style></head><body>${inner}</body></html>`;
 
 let ok = 0;
 for (const t of tiles) {
