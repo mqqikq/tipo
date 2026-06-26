@@ -267,7 +267,7 @@
       <a class="clink" href="https://wa.me/421952269974" target="_blank" rel="noopener">WhatsApp<span class="ar">↗</span></a>
       <a class="clink" href="mailto:shtyh07@gmail.com">Email<span class="ar">↗</span></a>
     </div>
-    <form class="cform reveal" action="https://formspree.io/f/yourformid" method="POST">
+    <form class="cform reveal" action="https://formspree.io/f/mbdvojle" method="POST">
       <div>
         <label data-en="Your name" data-uk="Ім'я">Your name</label>
         <input type="text" name="name" placeholder="John / Maria" required />
@@ -316,6 +316,28 @@
     if (stored) saved = stored;
   } catch (e) {}
   setLang(saved === 'uk' ? 'uk' : 'en');
+
+  const cform = document.querySelector('form.cform');
+  if (cform) {
+    cform.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const uk = document.documentElement.lang === 'uk';
+      const btn = cform.querySelector('button');
+      const original = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = uk ? 'Надсилаю…' : 'Sending…';
+      try {
+        const res = await fetch(cform.action, { method: 'POST', body: new FormData(cform), headers: { 'Accept': 'application/json' } });
+        if (!res.ok) throw new Error('bad');
+        cform.innerHTML = '<p style="font-family:var(--display);font-weight:500;font-size:24px;letter-spacing:-.02em;">' +
+          (uk ? 'Дякую! Відповім найближчим часом.' : "Thanks! I'll get back to you shortly.") + '</p>';
+      } catch (err) {
+        btn.disabled = false;
+        btn.innerHTML = original;
+        alert(uk ? 'Не вдалося надіслати. Напиши в Telegram або на email.' : 'Could not send — please reach out on Telegram or email.');
+      }
+    });
+  }
 </script>
 </body>
 </html>
