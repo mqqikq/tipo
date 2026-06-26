@@ -401,5 +401,113 @@
     setTimeout(function () { map.invalidateSize(); }, 200);
   });
 </script>
+<style>
+#bk{position:fixed;inset:0;z-index:1000;display:none;font-family:var(--font-body);}
+#bk.open{display:block;}
+#bk .bd{position:absolute;inset:0;background:rgba(40,28,22,.55);backdrop-filter:blur(3px);}
+#bk .card{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:92%;max-width:540px;max-height:90vh;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 40px 90px -40px rgba(120,88,70,.5);}
+#bk .hd{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--line);}
+#bk .hd h3{font-family:var(--font-head);font-weight:600;font-size:24px;color:var(--ink);margin:0;}
+#bk .hr{display:flex;align-items:center;gap:14px;}
+#bk .stp{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);}
+#bk .x{background:none;border:0;color:var(--ink-dim);font-size:26px;line-height:1;cursor:pointer;}
+#bk .x:hover{color:var(--ink);}
+#bk .by{padding:22px 24px;overflow:auto;}
+#bk .q{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);margin:0 0 14px;}
+#bk .opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--bg);border:1px solid var(--line);color:var(--ink);padding:14px 16px;margin-bottom:10px;cursor:pointer;border-radius:14px;transition:.15s;}
+#bk .opt:hover{border-color:var(--rose);}
+#bk .opt.sel{border-color:var(--terra);background:rgba(181,112,90,.07);}
+#bk .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--terra));color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:19px;flex-shrink:0;}
+#bk .opt .nm{font-weight:500;font-size:16px;}
+#bk .opt .rl{font-size:12px;color:var(--ink-dim);}
+#bk .opt .meta{margin-left:auto;text-align:right;}
+#bk .opt .pr{font-family:var(--font-head);font-weight:600;color:var(--terra);font-size:19px;}
+#bk .opt .du{font-size:11px;color:var(--ink-dim);text-transform:uppercase;letter-spacing:.06em;}
+#bk .days{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:18px;}
+#bk .day{flex:0 0 auto;min-width:58px;text-align:center;background:var(--bg);border:1px solid var(--line);color:var(--ink);padding:10px 6px;cursor:pointer;border-radius:12px;}
+#bk .day:hover{border-color:var(--rose);}
+#bk .day.sel{border-color:var(--terra);background:rgba(181,112,90,.07);}
+#bk .day .wd{font-size:11px;color:var(--ink-dim);text-transform:uppercase;}
+#bk .day .dn{font-family:var(--font-head);font-weight:600;font-size:21px;}
+#bk .slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+#bk .slot{background:var(--bg);border:1px solid var(--line);color:var(--ink);padding:11px 2px;cursor:pointer;font-size:15px;border-radius:10px;}
+#bk .slot:hover{border-color:var(--rose);}
+#bk .slot.sel{background:var(--terra);color:#fff;border-color:var(--terra);}
+#bk .slot.off{opacity:.32;text-decoration:line-through;cursor:not-allowed;}
+#bk .fl{margin-bottom:14px;}
+#bk .fl label{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:6px;}
+#bk .fl input{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);padding:12px 14px;font-family:var(--font-body);font-size:15px;border-radius:10px;}
+#bk .fl input:focus{outline:none;border-color:var(--terra);}
+#bk .sum{background:var(--bg);border:1px solid var(--line);padding:15px 17px;border-radius:14px;}
+#bk .sum div{display:flex;justify-content:space-between;padding:5px 0;font-size:14px;color:var(--ink-dim);}
+#bk .sum b{color:var(--ink);font-weight:500;}
+#bk .ft{display:flex;gap:10px;padding:18px 24px;border-top:1px solid var(--line);}
+#bk .mn{flex:1;font-size:14px;letter-spacing:.04em;padding:14px;border:1px solid var(--terra);background:var(--terra);color:#fff;cursor:pointer;border-radius:40px;}
+#bk .mn:hover{background:var(--rose);border-color:var(--rose);}
+#bk .mn[disabled]{opacity:.4;cursor:not-allowed;}
+#bk .bk2{flex:0 0 auto;background:transparent;color:var(--ink-dim);border:1px solid var(--line);padding:14px 22px;cursor:pointer;font-size:14px;border-radius:40px;}
+#bk .bk2:hover{color:var(--ink);border-color:var(--rose);}
+#bk .done{text-align:center;padding:18px 0;}
+#bk .ck{width:68px;height:68px;border-radius:50%;background:var(--terra);color:#fff;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 18px;}
+#bk .done h3{font-family:var(--font-head);font-weight:600;color:var(--ink);font-size:26px;margin:0 0 10px;}
+#bk .done p{color:var(--ink-dim);font-size:15px;margin:0;}
+#bk .nt{font-size:11px;color:var(--ink-dim);opacity:.7;margin-top:16px;}
+</style>
+<div id="bk" role="dialog" aria-modal="true" aria-label="Booking">
+  <div class="bd" data-close></div>
+  <div class="card">
+    <div class="hd"><h3 id="bkT">Book an appointment</h3><div class="hr"><span class="stp" id="bkS"></span><button class="x" data-close aria-label="Close">&times;</button></div></div>
+    <div class="by" id="bkB"></div>
+    <div class="ft" id="bkF"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var D={
+    masters:[{n:'Elena',r:'Colourist'},{n:'Sofia',r:'Esthetician'},{n:'Marta',r:'Nail artist'},{n:'Any',r:'First available'}],
+    services:[{n:'Cut + blow-dry',p:'€39',d:'60 min'},{n:'Colour',p:'€69',d:'120 min'},{n:'Balayage / airtouch',p:'€129',d:'180 min'},{n:'Facial cleanse',p:'€59',d:'60 min'},{n:'Brows + lamination',p:'€29',d:'45 min'},{n:'Manicure + gel',p:'€35',d:'60 min'}],
+    slots:['09:00','09:45','10:30','11:15','12:00','13:30','14:15','15:00','15:45','16:30','17:15','18:00','18:45','19:30']
+  };
+  var s={},M=document.getElementById('bk'),B=document.getElementById('bkB'),F=document.getElementById('bkF'),S=document.getElementById('bkS');
+  function open(){ s={step:1}; M.classList.add('open'); document.body.style.overflow='hidden'; render(); }
+  function close(){ M.classList.remove('open'); document.body.style.overflow=''; }
+  document.querySelectorAll('a.btn:not(.btn-ghost)').forEach(function(b){ b.addEventListener('click',function(e){ e.preventDefault(); open(); }); });
+  M.querySelectorAll('[data-close]').forEach(function(x){ x.addEventListener('click',close); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&M.classList.contains('open')) close(); });
+  function esc(v){ return (v||'').replace(/"/g,'&quot;'); }
+  function days(){ var a=[],w=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],t=new Date(); for(var i=0;i<12;i++){ var d=new Date(t); d.setDate(t.getDate()+i); a.push({k:d.toISOString().slice(0,10),wd:w[d.getDay()],dn:d.getDate()}); } return a; }
+  function fmt(k){ var d=new Date(k+'T00:00'),w=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],m=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return w[d.getDay()]+' '+d.getDate()+' '+m[d.getMonth()]; }
+  function hsh(x){ var h=0; for(var i=0;i<x.length;i++) h=(h*31+x.charCodeAt(i))>>>0; return h; }
+  function off(k,t){ return hsh(k+'|'+(s.master?s.master.n:'')+'|'+t)%10<4; }
+  function foot(back,label,on,fn){ F.innerHTML=(back?'<button class="bk2" id="bkBk">Back</button>':'')+'<button class="mn" id="bkMn"'+(on?'':' disabled')+'>'+label+'</button>'; if(back) document.getElementById('bkBk').onclick=function(){ s.step--; render(); }; document.getElementById('bkMn').onclick=fn; }
+  function slots(){ var c=document.getElementById('bkSl'); if(!c) return; if(!s.date){ c.innerHTML='<p style="grid-column:1/-1;color:var(--ink-dim);font-size:13px;margin:0;">Select a day first.</p>'; return; } c.innerHTML=D.slots.map(function(t){ var o=off(s.date,t); return '<button class="slot'+(o?' off':'')+(s.time===t?' sel':'')+'" data-t="'+t+'"'+(o?' disabled':'')+'>'+t+'</button>'; }).join(''); c.querySelectorAll('.slot:not(.off)').forEach(function(b){ b.onclick=function(){ s.time=b.dataset.t; render(); }; }); }
+  function render(){
+    S.textContent = s.step<=4 ? s.step+' / 4' : '';
+    if(s.step===1){
+      B.innerHTML='<p class="q">Choose a specialist</p>'+D.masters.map(function(m,i){ return '<button class="opt'+(s.master&&s.master.n===m.n?' sel':'')+'" data-i="'+i+'"><span class="av">'+m.n.charAt(0)+'</span><span><div class="nm">'+m.n+'</div><div class="rl">'+m.r+'</div></span></button>'; }).join('');
+      B.querySelectorAll('.opt').forEach(function(b){ b.onclick=function(){ s.master=D.masters[+b.dataset.i]; render(); }; });
+      foot(false,'Next',!!s.master,function(){ s.step=2; render(); });
+    } else if(s.step===2){
+      B.innerHTML='<p class="q">Choose a service</p>'+D.services.map(function(v,i){ return '<button class="opt'+(s.service&&s.service.n===v.n?' sel':'')+'" data-i="'+i+'"><span class="nm">'+v.n+'</span><span class="meta"><div class="pr">'+v.p+'</div><div class="du">'+v.d+'</div></span></button>'; }).join('');
+      B.querySelectorAll('.opt').forEach(function(b){ b.onclick=function(){ s.service=D.services[+b.dataset.i]; render(); }; });
+      foot(true,'Next',!!s.service,function(){ s.step=3; render(); });
+    } else if(s.step===3){
+      B.innerHTML='<p class="q">Pick a day</p><div class="days">'+days().map(function(d){ return '<button class="day'+(s.date===d.k?' sel':'')+'" data-k="'+d.k+'"><div class="wd">'+d.wd+'</div><div class="dn">'+d.dn+'</div></button>'; }).join('')+'</div><p class="q">Pick a time</p><div class="slots" id="bkSl"></div>';
+      B.querySelectorAll('.day').forEach(function(b){ b.onclick=function(){ s.date=b.dataset.k; s.time=null; render(); }; });
+      slots();
+      foot(true,'Next',!!(s.date&&s.time),function(){ s.step=4; render(); });
+    } else if(s.step===4){
+      B.innerHTML='<p class="q">Your details</p><div class="fl"><label>Name</label><input id="bkN" value="'+esc(s.name)+'" placeholder="Your name"></div><div class="fl"><label>Phone</label><input id="bkP" value="'+esc(s.phone)+'" placeholder="+43 ..."></div><div class="sum"><div><span>Specialist</span><b>'+s.master.n+'</b></div><div><span>Service</span><b>'+s.service.n+' · '+s.service.p+'</b></div><div><span>When</span><b>'+fmt(s.date)+' · '+s.time+'</b></div></div>';
+      var n=document.getElementById('bkN'),p=document.getElementById('bkP');
+      function ch(){ s.name=n.value; s.phone=p.value; var m=document.getElementById('bkMn'); if(m) m.disabled=!(s.name.trim()&&s.phone.trim()); }
+      n.oninput=ch; p.oninput=ch;
+      foot(true,'Confirm booking',!!(s.name&&s.name.trim()&&s.phone&&s.phone.trim()),function(){ s.step=5; render(); });
+    } else {
+      B.innerHTML='<div class="done"><div class="ck">✓</div><h3>You’re booked</h3><p>'+s.master.n+' · '+s.service.n+'<br>'+fmt(s.date)+' at '+s.time+'</p><p class="nt">Demo booking — no real appointment was made.</p></div>';
+      F.innerHTML='<button class="mn" id="bkMn">Done</button>'; document.getElementById('bkMn').onclick=close; S.textContent='';
+    }
+  }
+})();
+</script>
 </body>
 </html>
