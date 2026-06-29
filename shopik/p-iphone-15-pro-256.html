@@ -3,73 +3,142 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>*{margin:0;padding:0;box-sizing:border-box;font-family:'Manrope',sans-serif;}
-:root{--bg:#0d1a2e;--bg2:#0a1424;--surf:#142337;--card:#16273e;--line:#27395a;--ink:#eef2f9;--dim:#93a2bd;--acc:#3b82f6;--grn:#2fae6a;}
-html{scroll-behavior:smooth;}body{background:var(--bg);color:var(--ink);overflow-x:hidden;}
+:root{--bg:#0e1d33;--bg2:#0b1626;--surf:#16294320;--card:#172b46;--soft:#1b3050;--line:#2a456c;--ink:#eef3fb;--dim:#9bacc9;--acc:#4b8dff;--grn:#34c27a;}
+:root{--surf:#15284240;--line:#2a456c;}
+html{scroll-behavior:smooth;}body{background:var(--bg);color:var(--ink);overflow-x:hidden;padding-bottom:0;}
 a{color:inherit;text-decoration:none;}
-.wrap{max-width:1180px;margin:0 auto;padding:0 40px;}
-.btn{font-weight:700;font-size:15px;padding:12px 24px;border-radius:12px;background:var(--acc);color:#fff;display:inline-block;border:0;cursor:pointer;}
-.btn.g{background:transparent;border:1px solid var(--line);color:var(--ink);}
+.wrap{max-width:1180px;margin:0 auto;padding:0 36px;}
+.btn{font-weight:700;font-size:15px;padding:13px 24px;border-radius:14px;background:var(--acc);color:#fff;display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;}
+.btn.g{background:#15284a;border:1px solid #2c456b;color:var(--ink);}
 .btn:hover{filter:brightness(1.08);}
-header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:15px 40px;background:rgba(13,26,46,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
-header .logo{height:30px;}
-nav{display:flex;gap:22px;}
-nav a{color:var(--dim);font-size:15px;font-weight:600;}
-nav a:hover,nav a.on{color:var(--ink);}
-.hr .btn{padding:10px 18px;font-size:14px;}
-@media(max-width:920px){nav{display:none;}}
-.crumb{color:var(--dim);font-size:14px;padding:24px 0 0;}
-.crumb a:hover{color:var(--ink);}
-.ptitle{font-size:40px;font-weight:800;letter-spacing:-.03em;margin:10px 0 26px;}
-.sec{padding:44px 0;}
+/* header */
+header{position:sticky;top:0;z-index:60;background:rgba(14,29,51,.92);backdrop-filter:blur(10px);border-bottom:1px solid #21385c;}
+.htop{display:flex;align-items:center;gap:22px;padding:15px 36px;max-width:1180px;margin:0 auto;}
+.htop .logo{height:30px;flex-shrink:0;}
+.search{flex:1;display:flex;align-items:center;background:#13284733;background:#152a49;border:1px solid #2a456c;border-radius:14px;padding:0 16px;height:48px;}
+.search svg{width:18px;height:18px;fill:none;stroke:var(--dim);stroke-width:2;margin-right:10px;flex-shrink:0;}
+.search input{flex:1;background:transparent;border:0;color:var(--ink);font-size:16px;outline:none;}
+.search input::placeholder{color:#6f83a4;}
+.hnav{display:flex;align-items:center;gap:18px;flex-shrink:0;}
+.hnav a{color:var(--dim);font-size:15px;font-weight:600;}
+.hnav a:hover{color:var(--ink);}
+@media(max-width:860px){.htop{flex-wrap:wrap;gap:12px;padding:12px 18px;}.search{order:3;flex-basis:100%;height:46px;}.hnav{display:none;}}
+/* bottom nav (mobile) */
+.bnav{display:none;}
+@media(max-width:860px){.bnav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:70;background:rgba(11,22,38,.96);backdrop-filter:blur(10px);border-top:1px solid #21385c;justify-content:space-around;padding:9px 0 11px;}
+.bnav a{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--dim);font-size:11px;font-weight:600;}
+.bnav svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;}
+.bnav a.on{color:var(--acc);}
+body{padding-bottom:70px;}}
+/* sections */
+.sec{padding:42px 0;}
 .sec.alt{background:var(--bg2);}
-.sechead{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:22px;}
+.sechead{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;}
 .sechead h2{font-size:26px;font-weight:800;letter-spacing:-.02em;}
 .sechead a{color:var(--acc);font-size:15px;font-weight:700;}
+.crumb{color:var(--dim);font-size:14px;padding:22px 0 0;}.crumb a:hover{color:var(--ink);}
+.ptitle{font-size:38px;font-weight:800;letter-spacing:-.03em;margin:10px 0 24px;}
+/* banners */
+.banners{display:flex;gap:16px;overflow-x:auto;padding:26px 0 6px;scroll-snap-type:x mandatory;}
+.banner{scroll-snap-align:start;flex:0 0 auto;width:560px;max-width:86vw;border-radius:22px;padding:30px 32px;display:flex;flex-direction:column;justify-content:center;min-height:210px;position:relative;overflow:hidden;}
+.banner.b1{background:linear-gradient(120deg,#2a3f6b,#16294a);}
+.banner.b2{background:linear-gradient(120deg,#143a52,#102338);}
+.banner.b3{background:linear-gradient(120deg,#3a2a5e,#171a3a);}
+.banner .k{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a9c0ea;margin-bottom:10px;}
+.banner h3{font-size:32px;font-weight:800;letter-spacing:-.02em;max-width:16ch;}
+.banner p{color:var(--dim);margin-top:8px;font-size:15px;}
+.banner .badge{position:absolute;top:22px;right:24px;background:var(--acc);color:#fff;font-weight:800;font-size:15px;padding:8px 14px;border-radius:30px;}
+/* big catalog button */
+.catbtn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;background:var(--acc);color:#fff;font-weight:800;font-size:20px;padding:22px;border-radius:18px;margin:28px 0 8px;}
+.catbtn svg{width:24px;height:24px;fill:none;stroke:#fff;stroke-width:2;}
+/* category tiles */
+.tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+.tile{background:var(--card);border:1px solid #25406500;border:1px solid #25406544;border-radius:18px;padding:22px 12px;text-align:center;display:block;}
+.tile:hover{border-color:var(--acc);}
+.tile .ic{width:48px;height:48px;border-radius:14px;background:#1d3458;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
+.tile .ic svg{width:26px;height:26px;fill:none;stroke:#a9c6ff;stroke-width:1.7;}
+.tile .n{font-weight:700;font-size:14px;}
+@media(max-width:860px){.tiles{display:flex;overflow-x:auto;gap:12px;}.tile{flex:0 0 120px;}}
+/* product grid */
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-.pcard{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:block;transition:transform .15s,border-color .15s;}
+.pcard{background:var(--card);border:1px solid #25406544;border-radius:18px;overflow:hidden;display:block;transition:transform .15s,border-color .15s;}
 .pcard:hover{transform:translateY(-4px);border-color:var(--acc);}
 .pcard .ph{height:166px;background:#eef1f6;position:relative;overflow:hidden;}
 .pcard .ph img{width:100%;height:100%;object-fit:cover;}
-.badge{position:absolute;top:12px;left:12px;font-size:11px;font-weight:700;padding:5px 10px;border-radius:20px;background:rgba(59,130,246,.95);color:#fff;}
-.badge.u{background:rgba(47,174,106,.95);}
+.badge2{position:absolute;top:12px;left:12px;font-size:11px;font-weight:700;padding:5px 10px;border-radius:20px;background:rgba(75,141,255,.95);color:#fff;}
+.badge2.u{background:rgba(52,194,122,.95);}
 .pcard .bd{padding:15px 16px 17px;}
-.pcard .nm{font-weight:700;font-size:15px;line-height:1.3;}
-.pcard .row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.pcard .nm{font-weight:700;font-size:15px;line-height:1.3;min-height:39px;}
+.pcard .row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-top:10px;}
 .pcard .pr{font-weight:800;font-size:18px;letter-spacing:-.02em;}
 .pcard .more{font-size:13px;font-weight:700;color:var(--acc);}
-@media(max-width:920px){.grid{grid-template-columns:repeat(2,1fr);}}
-footer{background:var(--bg2);border-top:1px solid var(--line);padding:40px 0 46px;margin-top:20px;}
-.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
-.foot img{height:28px;}.foot .c{color:var(--dim);font-size:14px;line-height:1.9;}
-.fnav{display:flex;gap:30px;}.fnav a{color:var(--dim);font-size:14px;}.fnav a:hover{color:var(--ink);}
-.fnote{margin-top:24px;color:#46556e;font-size:13px;}
-@media(max-width:920px){.wrap{padding:0 20px;}header{padding:13px 20px;}h1{font-size:38px;}.foot{flex-direction:column;align-items:flex-start;gap:16px;}}.pwrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;padding:14px 0 10px;}
-.pimg{border-radius:22px;overflow:hidden;border:1px solid var(--line);background:#eef1f6;aspect-ratio:1/1;}
+@media(max-width:860px){.grid{grid-template-columns:repeat(2,1fr);}}
+/* catalog hub */
+.cathub{display:grid;grid-template-columns:230px 1fr;gap:26px;align-items:start;padding-bottom:20px;}
+.side{position:sticky;top:96px;display:flex;flex-direction:column;gap:6px;}
+.side a{padding:13px 16px;border-radius:12px;color:var(--dim);font-weight:700;font-size:15px;background:var(--card);border:1px solid #25406533;}
+.side a:hover{color:var(--ink);border-color:var(--acc);}
+.gblock{background:var(--card);border:1px solid #25406544;border-radius:18px;padding:22px 24px;margin-bottom:16px;}
+.gblock h3{font-size:20px;font-weight:800;margin-bottom:6px;}
+.glist{display:grid;grid-template-columns:repeat(2,1fr);gap:2px 18px;}
+.glist a{display:flex;align-items:center;gap:8px;padding:11px 0;border-bottom:1px solid #21385c;color:var(--ink);font-size:15px;font-weight:500;}
+.glist a:hover{color:var(--acc);}
+.glist a .new{color:#ff6b6b;font-size:11px;font-weight:700;font-style:italic;}
+@media(max-width:860px){.cathub{grid-template-columns:1fr;}.side{position:static;flex-direction:row;flex-wrap:wrap;}.side a{padding:9px 14px;font-size:14px;}.glist{grid-template-columns:1fr;}}
+/* product page */
+.pwrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;padding:14px 0 10px;}
+.pimg{border-radius:22px;overflow:hidden;border:1px solid #25406544;background:#eef1f6;aspect-ratio:1/1;}
 .pimg img{width:100%;height:100%;object-fit:cover;}
-.pinfo .badge2{display:inline-block;font-size:12px;font-weight:700;padding:6px 12px;border-radius:20px;background:var(--acc);color:#fff;}
-.pinfo .badge2.u{background:var(--grn);}
-.pinfo h1{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:14px 0 8px;}
-.pinfo .price{font-size:34px;font-weight:800;color:#fff;margin-bottom:20px;}
-.specs{border-top:1px solid var(--line);margin-bottom:24px;}
-.specs div{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);color:var(--dim);font-size:15px;}
-.specs div b{color:var(--ink);font-weight:600;}
-.pacts{display:flex;gap:12px;}
+.pinfo .b2{display:inline-block;font-size:12px;font-weight:700;padding:6px 12px;border-radius:20px;background:var(--acc);color:#fff;}
+.pinfo .b2.u{background:var(--grn);}
+.pinfo h1{font-size:32px;font-weight:800;letter-spacing:-.02em;margin:14px 0 8px;}
+.pinfo .price{font-size:32px;font-weight:800;margin-bottom:20px;}
+.specs{border-top:1px solid #21385c;margin-bottom:22px;}
+.specs div{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid #21385c;color:var(--dim);font-size:15px;}
+.specs div b{color:var(--ink);}
+.pacts{display:flex;gap:12px;flex-wrap:wrap;}
 .note{color:var(--dim);font-size:14px;margin-top:14px;}
-@media(max-width:920px){.pwrap{grid-template-columns:1fr;gap:24px;}}</style></head><body><header><a href="index.html"><img class="logo" src="assets/logo.png" alt="Apple Shopik"></a>
-<nav><a href="cat-iphone.html" class="on">iPhone</a><a href="cat-mac.html">Mac</a><a href="cat-ipad.html">iPad</a><a href="cat-airpods.html">AirPods</a><a href="cat-watch.html">Apple Watch</a><a href="cat-used.html">Вживані</a><a href="contacts.html">Контакти</a></nav>
-<div class="hr"><a class="btn" href="contacts.html">Замовити</a></div></header><div class="wrap">
+@media(max-width:860px){.pwrap{grid-template-columns:1fr;gap:22px;}}
+/* info accordion */
+.info{display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;}
+.info details{border-bottom:1px solid #21385c;padding:6px 0;}
+.info summary{cursor:pointer;list-style:none;padding:13px 0;font-weight:700;font-size:16px;display:flex;justify-content:space-between;}
+.info summary::-webkit-details-marker{display:none;}
+.info summary::after{content:'+';color:var(--acc);font-weight:800;}
+.info details[open] summary::after{content:'–';}
+.info p{color:var(--dim);font-size:14px;line-height:1.65;padding:0 0 14px;}
+@media(max-width:860px){.info{grid-template-columns:1fr;}}
+/* contacts */
+.contact{display:grid;grid-template-columns:1fr 1.1fr;gap:24px;padding:14px 0 10px;}
+.cinfo{background:var(--card);border:1px solid #25406544;border-radius:20px;padding:28px 30px;}
+.cinfo h2{font-size:24px;font-weight:800;margin-bottom:4px;}.cinfo .lead{color:var(--dim);margin-bottom:18px;font-size:15px;}
+.crow{padding:13px 0;border-bottom:1px solid #21385c;}.crow:last-of-type{border:0;}
+.crow .k{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin-bottom:4px;}.crow .v{font-size:17px;}
+.cmap{border:1px solid #25406544;border-radius:20px;overflow:hidden;min-height:380px;}.cmap #map{width:100%;height:100%;min-height:380px;background:#0b1626;}
+.leaflet-control-attribution{background:rgba(14,29,51,.7)!important;color:var(--dim)!important;}.leaflet-control-attribution a{color:var(--acc)!important;}
+@media(max-width:860px){.contact{grid-template-columns:1fr;}}
+/* footer */
+footer{background:var(--bg2);border-top:1px solid #21385c;padding:38px 0 44px;}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:22px;}
+.foot img{height:28px;}.foot .c{color:var(--dim);font-size:14px;line-height:1.9;}
+.fnote{margin-top:22px;color:#46587a;font-size:13px;}</style></head><body><header><div class="htop">
+<a href="index.html"><img class="logo" src="assets/logo.png" alt="Apple Shopik"></a>
+<div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg><input placeholder="Пошук: iPhone 15, AirPods, чохол…"></div>
+<div class="hnav"><a href="catalog.html">Каталог</a><a href="contacts.html">Контакти</a><a href="https://t.me/apple_shopik" target="_blank">Telegram</a></div>
+</div></header><div class="wrap">
  <div class="crumb"><a href="index.html">Головна</a> / <a href="cat-iphone.html">iPhone</a> / iPhone 15 Pro 256 ГБ</div>
  <div class="pwrap">
   <div class="pimg"><img src="assets/pro.jpg" alt="iPhone 15 Pro 256 ГБ"></div>
-  <div class="pinfo">
-   <span class="badge2">Новий</span>
-   <h1>iPhone 15 Pro 256 ГБ</h1>
-   <div class="price">₴48 999</div>
+  <div class="pinfo"><span class="b2">Новий</span>
+   <h1>iPhone 15 Pro 256 ГБ</h1><div class="price">₴48 999</div>
    <div class="specs"><div><b>•</b> Дисплей 6.1" ProMotion</div><div><b>•</b> Чип A17 Pro</div><div><b>•</b> Титан · 3 камери</div><div><b>•</b> Новий · гарантія 12 міс</div></div>
-   <div class="pacts"><a class="btn" href="contacts.html">Замовити</a><a class="btn g" href="cat-iphone.html">← Назад до iPhone</a></div>
+   <div class="pacts"><a class="btn" href="https://t.me/apple_shopik" target="_blank">Замовити в Telegram</a><a class="btn g" href="cat-iphone.html">← iPhone</a></div>
    <div class="note">Оплата при отриманні або передоплата · доставка Новою Поштою · гарантія магазину.</div>
-  </div>
- </div></div><footer><div class="wrap foot">
-<div><a href="index.html"><img src="assets/logo.png" alt="Apple Shopik"></a><div class="fnote">© 2026 · Оригінальна техніка Apple</div></div>
+  </div></div></div><nav class="bnav">
+<a href="index.html"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Головна</a>
+<a href="catalog.html" class="on"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Каталог</a>
+<a href="https://t.me/apple_shopik" target="_blank"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.5 13h11l2-9H6"/></svg>Замовити</a>
+<a href="contacts.html"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.5 7.2L3 21l1.8-6A8 8 0 1 1 21 12z"/></svg>Контакти</a></nav><footer><div class="wrap foot">
+<div><a href="index.html"><img src="assets/logo.png" alt="Apple Shopik"></a><div class="fnote">© 2026 · Оригінальна техніка Apple · Івано-Франківськ</div></div>
 <div class="c">Telegram · Instagram<br>Івано-Франківськ · Косів<br>Щодня 8:00 — 20:00</div>
 </div></footer></body></html>
